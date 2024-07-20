@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularUnitTesting';
+  btnText = "Subscribe";
+  isSubscribed = false;
+
+  subscribe(){
+    setTimeout(() => {
+      this.isSubscribed = true;
+      this.btnText = "Subscribed";
+    }, 3000)
+  }
 }
