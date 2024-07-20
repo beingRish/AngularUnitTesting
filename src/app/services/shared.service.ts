@@ -5,9 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
 
-  constructor() { 
-    console.log('A HTTP Call');
-    
+  constructor() {     
   }
 
   mySharedFunction() {
