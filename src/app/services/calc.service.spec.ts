@@ -25,7 +25,7 @@ describe("CalcService", () => {
     calc = TestBed.inject(CalcService);
   });
 
-  fit('should multiply two numbers', ()=> {
+  it('should multiply two numbers', ()=> {
     const result = calc.multiply(3, 5);
     expect(result).toBe(15);
   })
@@ -37,14 +37,14 @@ describe("CalcService", () => {
   })
 
 
-  // it('should call the mySharedFunction func', () => {
-  //   // const shared = new SharedService();
-  //   const shared = jasmine.createSpyObj("SharedService", ["mySharedFunction"]);
-  //   const calc = new CalcService(shared);
-  //   // spyOn(shared, "mySharedFunction")
-  //   // spyOn(shared, "mySharedFunction").and.callThrough();
-  //   const result = calc.multiply(3, 5);
-  //   // expect(shared.mySharedFunction).toHaveBeenCalled();
-  //   expect(result).toBe(15); 
-  // })
+  it('should call the mySharedFunction func', () => {
+    // const shared = new SharedService();
+    const shared = jasmine.createSpyObj("SharedService", ["mySharedFunction"]);
+    const calc = new CalcService(shared);
+    // spyOn(shared, "mySharedFunction")
+    // spyOn(shared, "mySharedFunction").and.callThrough();
+    const result = calc.multiply(3, 5);
+    // expect(shared.mySharedFunction).toHaveBeenCalled();
+    expect(result).toBe(15); 
+  })
 })
