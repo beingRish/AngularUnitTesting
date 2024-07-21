@@ -1,8 +1,9 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { count, delay, of } from 'rxjs';
 
 describe('AppComponent', () => {
 
@@ -90,5 +91,46 @@ describe('AppComponent', () => {
     expect(btnElements[0].nativeElement.disabled).toBeTrue();
     // tick(5000);
   }))
+
+  it("should test the promise", fakeAsync(() => {
+    let counter = 0;
+
+    setTimeout(() => {
+      console.log("First Set Timeout");
+      
+      counter = counter + 2;
+    }, 2000)
+
+    setTimeout(() => {
+      console.log("Second Set Timeout");
+      counter = counter + 3;
+    }, 3000)
+
+    Promise.resolve().then(() => {
+      console.log("Promise");
+      counter = counter + 1;
+    });
+
+    // flush();
+
+    // tick(1000)
+    flushMicrotasks();
+    expect(counter).toBe(1)
+
+    tick(2000);
+    expect(counter).toBe(3);
+    tick(3000);
+    expect(counter).toBe(6);
+  }))
+
+  it("should test the observable", fakeAsync(() => {
+    let isSubscribed = false;
+    let myObs = of(isSubscribed).pipe(delay(1000));
+    myObs.subscribe(() => {
+      isSubscribed = true;
+    });
+    tick(1000);
+    expect(isSubscribed).toBeTrue();
+  }));
 
 });
