@@ -1,10 +1,11 @@
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { delay, of } from 'rxjs';
 import { GradePipe } from './pipes/grade.pipe';
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
 
@@ -15,11 +16,13 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule.withRoutes([]),
+        RouterModule
       ],
       declarations: [
         AppComponent, GradePipe
       ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
       el = fixture.debugElement;
