@@ -7,13 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { GradePipe } from './pipes/grade.pipe';
 import { GradeDirective } from './directives/grade.directive';
 import { RouterModule } from '@angular/router';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     GradePipe,
-    GradeDirective
+    GradeDirective,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
