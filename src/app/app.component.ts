@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'AngularUnitTesting';
   btnText = "Subscribe";
   isSubscribed = false;
+  marks = [97, 68, 83, 29, 75];
 
   subscribe(){
     setTimeout(() => {

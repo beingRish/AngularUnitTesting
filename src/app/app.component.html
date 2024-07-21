@@ -6,6 +6,7 @@
 <button class="subscribe" *ngIf="isSubscribed" disabled>Subscribed</button>
 <p>{{title}}</p>
 
+<div *ngFor="let mark of marks">{{ mark | grade }}</div>
 
 
 

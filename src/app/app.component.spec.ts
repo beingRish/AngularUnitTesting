@@ -3,7 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { count, delay, of } from 'rxjs';
+import { delay, of } from 'rxjs';
+import { GradePipe } from './pipes/grade.pipe';
 
 describe('AppComponent', () => {
 
@@ -17,7 +18,7 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent, GradePipe
       ],
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
