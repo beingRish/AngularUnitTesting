@@ -17,4 +17,8 @@ export class AppComponent {
       this.btnText = "Subscribed";
     }, 3000)
   }
+
+  showMessage(msg:string): string {
+    return msg;
+  }
 }
