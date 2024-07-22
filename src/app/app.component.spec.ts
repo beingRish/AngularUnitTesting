@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { delay, of } from 'rxjs';
 import { GradePipe } from './pipes/grade.pipe';
 import { RouterModule } from '@angular/router';
+import { Addition } from './Calculator';
 
 describe('AppComponent', () => {
 
@@ -136,5 +137,13 @@ describe('AppComponent', () => {
     tick(1000);
     expect(isSubscribed).toBeTrue();
   }));
+
+  it("Show Alrt message", () => {
+    expect(component.showMessage("Hello")).toBe("Hello");
+  })
+
+  it("Show the Addition result", () => {
+    expect(Addition(2, 8)).toBe(10)
+  })
 
 });
